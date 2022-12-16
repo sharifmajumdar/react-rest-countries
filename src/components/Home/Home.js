@@ -37,27 +37,28 @@ const Home = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
-    const handleRequestSort = (event, property) => {
+/*     const handleRequestSort = (event, property) => {
         const isAscending = (valueToOrderBy === property && orderDirection === 'asc');
         setValueToOrderBy(property);
         setOrderDirection(isAscending ? 'desc' : 'asc');
-    }
+    } */
+    const handleRequestSort = useCallback(
+        (event, property) => {
+            const isAscending = (valueToOrderBy === property && orderDirection === 'asc');
+            setValueToOrderBy(property);
+            setOrderDirection(isAscending ? 'desc' : 'asc');
+        },
+        ['asc'],
+      );
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     }
 
-    const handleChangeRowsPerPage = useCallback(
-        (event) => {
-            setRowsPerPage(parseInt(event.target.value), 10)
-            setPage(0);
-        }
-      );
-
-  /*   const handleChangeRowsPerPage = (event) => {
+    const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value), 10)
         setPage(0);
-    } */
+    }
     return (
         <div>
             <TableContainer>
