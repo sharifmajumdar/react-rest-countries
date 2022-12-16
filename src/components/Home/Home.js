@@ -48,7 +48,7 @@ const Home = () => {
             setValueToOrderBy(property);
             setOrderDirection(isAscending ? 'desc' : 'asc');
         },
-        ['asc'],
+        [orderDirection, valueToOrderBy],
       );
 
     const handleChangePage = (event, newPage) => {
