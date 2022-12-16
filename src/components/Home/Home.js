@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 import { CountriesContext } from '../../App';
 import { TableContainer, Table, TableBody, TableRow, TableCell, TablePagination } from '@mui/material';
 import TableHeader from '../TableHeader/TableHeader';
@@ -47,10 +47,18 @@ const Home = () => {
         setPage(newPage);
     }
 
-    const handleChangeRowsPerPage = (event) => {
+    const handleChangeRowsPerPage = useCallback(
+        (event) => {
+            setRowsPerPage(parseInt(event.target.value), 10)
+            setPage(0);
+        },
+        [rowsPerPage],
+      );
+
+  /*   const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value), 10)
         setPage(0);
-    }
+    } */
     return (
         <div>
             <TableContainer>

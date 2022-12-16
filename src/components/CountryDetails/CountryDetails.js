@@ -1,37 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
+import useFetch from '../useFetch/useFetch';
 
-const CountryDetails = (props) => {
+const CountryDetails = () => {
     const { countryName } = useParams();
-    console.log(countryName);
-    const [countryDetail, setCountryDetail] = useState([]);
-
-/*     const memoizedCallback = useCallback(
-        () => {
-          doSomething(a, b);
-        },
-        [a, b],
-      ); */
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const url = `https://restcountries.com/v3.1/name/${countryName}`;
-                const res = await fetch(url);
-                const data = await res.json();
-                setCountryDetail(data);
-            }
-            catch (error) {
-                alert(error.message);
-            }
-        }
-        fetchData();
-    }, [countryName])
+    const { countryDetail } = useFetch(`https://restcountries.com/v3.1/name/${countryName}`);
     return (
         <Card sx={{ maxWidth: 750, margin: 'auto', flexDirection: 'column', marginTop: 5 }}>
             {

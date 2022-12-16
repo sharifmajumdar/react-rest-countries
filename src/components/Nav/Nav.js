@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-//import CountryDetails from '../CountryDetails/CountryDetails';
 import IMG from './favicon.png';
 
 const Nav = () => {
     const [searchText, setSearchText] = useState('');
-
-/*     const submitHandler = (e) => {
-        e.preventDefault();
-        <CountryDetails searchText={searchText} />
-    } */
-
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow justify-content-between">
@@ -24,7 +17,7 @@ const Nav = () => {
                         <Link className="nav-item nav-link" to="/about">About</Link>
                         <Link className="nav-item nav-link" to="/blog">Blog</Link>
                         <Link className="nav-item nav-link" to="/contact">Contact</Link>
-                        <form class="form-inline d-flex">
+                        <form className="form-inline d-flex">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search country here" aria-label="Search"
                                 onChange={(e) => {
                                     setSearchText(e.target.value);}}
