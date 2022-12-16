@@ -51,8 +51,7 @@ const Home = () => {
         (event) => {
             setRowsPerPage(parseInt(event.target.value), 10)
             setPage(0);
-        },
-        [rowsPerPage],
+        }
       );
 
   /*   const handleChangeRowsPerPage = (event) => {
